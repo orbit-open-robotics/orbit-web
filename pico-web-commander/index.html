@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Pico Code Editor</title>
+    <!-- Paho MQTT client for browsers -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/paho-mqtt/1.1.0/paho-mqtt.min.js"></script>
+    <script src="script.js" defer></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <h2>Pico Code Editor</h2>
+
+    <div id="status" class="disconnected">Disconnected from broker</div>
+
+    <textarea id="code" placeholder="Type your MicroPython code here...">
+# Example: blink the onboard LED
+from machine import Pin
+import time
+
+led = Pin('LED', Pin.OUT)
+for _ in range(5):
+    led.on()
+    time.sleep(0.5)
+    led.off()
+    time.sleep(0.5)
+</textarea>
+
+    <br>
+    <button id="send-btn" disabled onclick="sendCode()">Send to Pico</button>
+    <button onclick="clearLog()">Clear Log</button>
+
+    <h3>Log</h3>
+    <div id="log"></div>
+
+
+</body>
+
+</html>

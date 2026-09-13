@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/paho-mqtt/1.1.0/paho-mqtt.min.js"></script>
+    <script src="script.js" defer></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+     <div id="status" class="disconnected">Disconnected from broker</div>
+    <input id="msg" type="text" placeholder="Type a message">
+    <button id="send-btn" onclick="send()">Send to Pico</button>
+    <br>
+
+
+    <h3>Log</h3>
+    <div id="log"></div>
+    <button onclick="clearLog()">Clear Log</button>
+
+
+</body>
+
+</html>
