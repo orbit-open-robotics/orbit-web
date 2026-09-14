@@ -8,15 +8,24 @@
 </head>
 
 <body>
-    <h1>Pico Web Talk</h1>
-    <p>Send and receive messages to a Pico.</p>
+    <!-- Hero -->
+    <div class="hero">
+        <h1>Pico Web Talk</h1>
+        <p>Send and receive messages to a Pico.</p>
+    </div>
 
     <div id="status" class="disconnected">Disconnected from broker</div>
 
-    <!-- Message i/o section -->
-    <input id="msg" type="text" placeholder="Type a message">
-    <button id="send-btn" onclick="send()">Send to Pico</button>
-    <br>
+    <!-- Send Message Section -->
+    <div class="send_section">
+        <label for="subcribe_topic">Subscribe Topic:</label>
+        <input type="text" id="subcribe_topic">
+
+        <label for="message"></label>
+        <input id="message" type="text" placeholder="Type a message">
+        <button id="send-btn" onclick="send()">Send to Pico</button>
+        <br>
+    </div>
 
 
     <!-- Log section -->

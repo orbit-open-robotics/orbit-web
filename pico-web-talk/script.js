@@ -6,6 +6,8 @@ const TOPIC_RX = "orbit_pico/response";  // Pico → laptop
 const clientId = "webclient_" + Math.random().toString(16).slice(2, 8);
 const client = new Paho.Client(BROKER, PORT, clientId);
 
+let current_subscribe_topic = TOPIX_TX;
+
 // --- Logging ---
 function log(msg) {
     const div = document.getElementById("log");
@@ -49,7 +51,7 @@ function connect() {
 }   
 
 function send() {
-    const text = document.getElementById("msg").value;
+    const text = document.getElementById("message").value;
     if (!text) { log("Nothing to send."); return; }
 
 
