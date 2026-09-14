@@ -8,15 +8,21 @@
 </head>
 
 <body>
-     <div id="status" class="disconnected">Disconnected from broker</div>
+    <h1>Pico Web Talk</h1>
+    <p>Send and receive messages to a Pico.</p>
+
+    <div id="status" class="disconnected">Disconnected from broker</div>
+
+    <!-- Message i/o section -->
     <input id="msg" type="text" placeholder="Type a message">
     <button id="send-btn" onclick="send()">Send to Pico</button>
     <br>
 
 
+    <!-- Log section -->
     <h3>Log</h3>
     <div id="log"></div>
-    <button onclick="clearLog()">Clear Log</button>
+    <button id="clear-log-btn" onclick="clearLog()">Clear Log</button>
 
 
 </body>
