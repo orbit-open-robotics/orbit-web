@@ -28,7 +28,7 @@ h2 {
     padding: 1rem 0rem;
 }
 
-#status {
+#status-display {
     padding: 0.5rem;
 
     &.disconnected {
