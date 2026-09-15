@@ -30,15 +30,18 @@ h2 {
 
 #status-display {
     padding: 0.5rem;
+    color: white;
 
     &.disconnected {
-        color: hsl(0, 0%, 100%);
         background-color: hsl(0, 100%, 50%);
     }
 
     &.connected {
         background-color: hsl(120, 100%, 25%);
-        color: white;
+    }
+
+    &.sent {
+        background-color:  hsl(189, 100%, 33%);
     }
 }
 

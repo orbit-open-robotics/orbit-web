@@ -91,7 +91,7 @@ function send() {
     message.destinationName = publish_topic;
     client.send(message);
     log("Sent " + message.payloadString.length + " bytes to " + publish_topic);
-    setStatus("sent", `Code sent to ${publish_topic}`);
+    setStatus("sent", `Message sent to ${publish_topic}`);
 }
 
 function setStatus(type, text) {
