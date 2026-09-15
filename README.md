@@ -1,6 +1,6 @@
 # orbit-web
-## Communicate with a Pico
-[pico-web-talk](pico-web-talk/)
+## Communicate through MQTT
+[web-talk](web-talk/)
 
-## Send commands to the Pico
-[pico-web-commander](pico-web-commander/)
+## Send commands via MQTT
+[web-commander](web-commander/)
