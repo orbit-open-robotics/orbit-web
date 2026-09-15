@@ -5,8 +5,39 @@ const TOPIC_RX = "orbit_pico/response";  // Pico → laptop
 
 const clientId = "webclient_" + Math.random().toString(16).slice(2, 8);
 const client = new Paho.Client(BROKER, PORT, clientId);
+let savedSubscribeTopic = TOPIC_RX;
 
-let current_subscribe_topic = TOPIX_TX;
+// HTML elements
+const publishTopicInput = document.getElementById("publish-topic-input");
+const sendMessageInput = document.getElementById("send-message-input");
+const subscribeTopicInput = document.getElementById("subscribe-topic-input");
+const receivedMessageInput = document.getElementById("recieved-message-input");
+const sendButton = document.getElementById("send-button");
+const statusDisplay = document.getElementById("status-display");
+const body = document.body;
+
+subscribeTopicInput.onchange = () => {
+    client.unsubscribe(savedSubscribeTopic);
+    savedSubscribeTopic = subscribeTopicInput.value;
+    client.subscribe(savedSubscribeTopic);
+    log("Subscribed to " + savedSubscribeTopic);
+};
+
+body.onkeydown = (event) => {
+    if (event.key === "Enter") {
+        send();
+    }
+};
+
+
+// Initialize UI elements
+function initialize() {
+    receivedMessageInput.value = "";
+    receivedMessageInput.readOnly = true;
+    subscribeTopicInput.value = TOPIC_RX;
+    publishTopicInput.value = TOPIC_TX;
+    sendButton.disabled = true;
+}
 
 // --- Logging ---
 function log(msg) {
@@ -23,13 +54,14 @@ function clearLog() {
 // --- MQTT callbacks ---
 client.onConnectionLost = (res) => {
     setStatus("disconnected", "Disconnected: " + res.errorMessage);
-    document.getElementById("send-btn").disabled = true;
+    sendButton.disabled = true;
     log("Connection lost — retrying in 5s...");
     setTimeout(connect, 5000);
 };
 
 client.onMessageArrived = (message) => {
-    log("Pico says: " + message.payloadString);
+    log("Received: " + message.payloadString);
+    receivedMessageInput.value = message.payloadString;
 };
 
 
@@ -39,9 +71,10 @@ function connect() {
         useSSL: true,
         onSuccess: () => {
             setStatus("connected", "Connected to broker");
-            document.getElementById("send-btn").disabled = false;
-            client.subscribe(TOPIC_RX);
-            log("Connected! Subscribed to " + TOPIC_RX);
+            sendButton.disabled = false;
+            savedSubscribeTopic = subscribeTopicInput.value;
+            client.subscribe(savedSubscribeTopic);
+            log("Connected! Subscribed to " + savedSubscribeTopic);
         },
         onFailure: (err) => {
             log("Connection failed: " + err.errorMessage);
@@ -51,24 +84,23 @@ function connect() {
 }   
 
 function send() {
-    const text = document.getElementById("message").value;
+    const text = sendMessageInput.value;
     if (!text) { log("Nothing to send."); return; }
-
-
     const message = new Paho.Message(text);
-    message.destinationName = TOPIC_TX;
+    const publish_topic = publishTopicInput.value;
+    message.destinationName = publish_topic;
     client.send(message);
-    log("Sent " + message.length + " bytes to " + TOPIC_TX);
-    setStatus("sent", "Code sent to Pico");
+    log("Sent " + message.payloadString.length + " bytes to " + publish_topic);
+    setStatus("sent", `Code sent to ${publish_topic}`);
 }
 
 function setStatus(type, text) {
-    const el = document.getElementById("status");
-    el.className = type;
-    el.textContent = text;
+    statusDisplay.className = type;
+    statusDisplay.textContent = text;
 }
 
 // --- Start ---
+initialize();
 connect();
 
 

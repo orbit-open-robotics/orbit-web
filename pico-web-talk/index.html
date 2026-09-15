@@ -10,28 +10,45 @@
 <body>
     <!-- Hero -->
     <div class="hero">
-        <h1>Pico Web Talk</h1>
-        <p>Send and receive messages to a Pico.</p>
+        <h1>Web Talk</h1>
+        <p>Send and receive messages via MQTT.</p>
     </div>
+    <div class="spacer"></div>
 
-    <div id="status" class="disconnected">Disconnected from broker</div>
+    <!-- Status  -->
+    <h2>Status</h2>
+    <div id="status-display" class="disconnected">Disconnected from broker</div>
+    <div class="spacer"></div>
 
     <!-- Send Message Section -->
+    <h2>Send Message</h2>
     <div class="send_section">
-        <label for="subcribe_topic">Subscribe Topic:</label>
-        <input type="text" id="subcribe_topic">
-
-        <label for="message"></label>
-        <input id="message" type="text" placeholder="Type a message">
-        <button id="send-btn" onclick="send()">Send to Pico</button>
+        <label for="publish-topic-input">Topic:</label>
+        <input type="text" id="publish-topic-input">
+        <div class="spacer"></div>
+        <label for="send-message-input">Message:</label>
+        <input id="send-message-input" type="text" placeholder="Type a message">
+        <button id="send-button" onclick="send()">Send</button>
         <br>
     </div>
+    <div class="spacer"></div>
 
+    <!-- Receive Message Section -->
+    <h2>Receive Message</h2>
+    <div class="receive_section">
+        <label for="subscribe-topic-input">Topic:</label>
+        <input type="text" id="subscribe-topic-input">
+        <div class="spacer"></div>
+        <label for="recieved-message-input">Message:</label>
+        <input id="recieved-message-input" type="text"">
+        <br>
+    </div>
+    <div class="spacer"></div>
 
     <!-- Log section -->
-    <h3>Log</h3>
+    <h2>Log</h2>
     <div id="log"></div>
-    <button id="clear-log-btn" onclick="clearLog()">Clear Log</button>
+    <button id="clear-log-button" onclick="clearLog()">Clear Log</button>
 
 
 </body>
