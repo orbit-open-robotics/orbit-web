@@ -1,0 +1,46 @@
+<!-- 
+ This will eventually turn into web-commander
+  -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Python Editor</title>
+  <link rel="stylesheet" href="style.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/paho-mqtt/1.1.0/paho-mqtt.min.js"></script>
+
+  <script type="module" src="app.js" defer></script>
+</head>
+
+<body>
+  <!-- Hero -->
+  <div class="hero">
+    <h1>Web Commander</h1>
+    <p>Send code via MQTT to a client to be executed .</p>
+    <p>Publish Topic: <span class="topic-name">orbit_pico/command</span></p>
+    <p>Subscribe Topic: <span class="topic-name">orbit_pico/response</span></p>
+  </div>
+  <div class="spacer"></div>
+
+  <!-- Status  -->
+  <h2>Status</h2>
+  <div id="status-display" class="disconnected">Disconnected from broker</div>
+  <div class="spacer"></div>
+
+  <!-- Code Area -->
+  <h2>Code</h2>
+  <div id="editor-container"></div>
+  <button id="send-button">Send</button>
+  <div class="spacer"></div>
+
+  <!-- Log section -->
+  <h2>Log</h2>
+  <div id="log"></div>
+  <button id="clear-log-button" onclick="clearLog()">Clear</button>
+
+
+</body>
+
+</html>

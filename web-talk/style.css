@@ -6,7 +6,7 @@
 
 body {
     max-width: 50rem;
-    background-color: hsl(0, 0%, 80%);
+    background: hsl(0, 0%, 95%);
     font-family: monospace;
     padding: 0rem 2rem;
     margin: 0 auto;
@@ -33,20 +33,21 @@ h2 {
     color: white;
 
     &.disconnected {
-        background-color: hsl(0, 100%, 50%);
+        background: hsl(0, 100%, 50%);
     }
 
     &.connected {
-        background-color: hsl(120, 100%, 25%);
+        background: hsl(120, 100%, 25%);
     }
 
     &.sent {
-        background-color:  hsl(189, 100%, 33%);
+        background: hsl(189, 100%, 33%);
     }
 }
 
-.send_section, .receive_section {
-    background-color: cadetblue;
+.send_section,
+.receive_section {
+    background: cadetblue;
     padding: 1rem;
 
     label {
@@ -56,7 +57,7 @@ h2 {
 }
 
 #log {
-    background-color: hsl(0, 0%, 0%);
+    background: hsl(0, 0%, 0%);
     color: hsl(0, 0%, 67%);
     padding: 0.5rem;
     height: 15rem;
@@ -66,18 +67,25 @@ h2 {
 }
 
 input {
-    padding: 0.25rem 0.5rem;
+    padding: 0.125rem 0.5rem;
 }
 
 button {
-    border-style: solid;
+    font-size: 0.75rem;
+    border-style: none;
     text-transform: uppercase;
     padding: 0.25rem 2rem;
-    background-color: hsl(0, 0%, 0%);
+    background: hsl(0, 0%, 0%);
     color: white;
+    transition: background-color 0.3s ease;
 
     &:disabled {
-        background-color: hsl(0, 0%, 30%);
+        background: hsl(0, 0%, 30%);
         cursor: not-allowed;
+    }
+
+    &:hover {
+        background: hsl(0, 0%, 30%);
+        cursor: pointer;
     }
 }

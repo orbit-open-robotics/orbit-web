@@ -1,0 +1,101 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  max-width: 50rem;
+  background: hsl(0, 0%, 95%);
+  font-family: monospace;
+  padding: 0rem 2rem;
+  margin: 0 auto;
+}
+
+h1 {
+  font-size: 2rem;
+}
+
+h2 {
+  font-size: 1.25rem;
+}
+
+.spacer {
+  height: 1rem;
+}
+
+.hero {
+  padding: 1rem 0rem;
+  p {
+    margin-bottom: 0.25rem;
+  }
+  .topic-name {
+    font-weight: 900;
+  }
+}
+
+#editor-container {
+  font-size: 0.75rem;
+  width: 100%;
+  height: 20rem;
+  background: hsl(0, 0%, 0%);
+  overflow: hidden;
+  margin-bottom: 0.25rem;
+}
+
+#status-display {
+  padding: 0.5rem;
+  color: white;
+
+  &.disconnected {
+    background: hsl(0, 100%, 50%);
+  }
+
+  &.connected {
+    background: hsl(120, 100%, 25%);
+  }
+
+  &.sent {
+    background: hsl(189, 100%, 33%);
+  }
+}
+
+/* .send_section, .receive_section {
+    background-color: cadetblue;
+    padding: 1rem;
+
+    label {
+        display: inline-block;
+        width: 3.5rem;
+    }
+} */
+
+#log {
+  background: hsl(0, 0%, 0%);
+  color: hsl(0, 0%, 67%);
+  padding: 0.5rem;
+  height: 15rem;
+  overflow-y: auto;
+  font-size: 0.75rem;
+  margin-bottom: 0.25rem;
+}
+
+button {
+  font-size: 0.75rem;
+  border-style: none;
+  text-transform: uppercase;
+  padding: 0.25rem 2rem;
+  background: hsl(189, 100%, 33%);
+  color: white;
+  transition: background 0.3s ease;
+
+  &:disabled {
+    background: hsl(0, 0%, 30%);
+    cursor: not-allowed;
+  }
+
+  &:hover {
+    background: hsl(189, 100%, 43%);
+    cursor: pointer;
+  }
+}
