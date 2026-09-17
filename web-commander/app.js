@@ -1,3 +1,6 @@
+// TODO: add device selector
+
+
 import { createPythonEditor, getCode, setCode } from './editor.js';
 
 const statusDisplay = document.getElementById("status-display");
