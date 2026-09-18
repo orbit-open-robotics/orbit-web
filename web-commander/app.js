@@ -1,4 +1,7 @@
 // TODO: add device selector
+// TODO: save / restore code to/from local storage (named code?)
+// Download / upload code
+// If code is too long for MQTT, break it into pieces.
 
 
 import { createPythonEditor, getCode, setCode } from './editor.js';
